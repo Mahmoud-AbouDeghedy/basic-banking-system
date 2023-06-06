@@ -19,7 +19,6 @@ app.get("/api/v1/customers", (req, res) => {
 			res.json(results);
 		}
 	});
-	connection.release();
 });
 
 app.post("/api/v1/transaction", (req, res) => {
@@ -66,7 +65,6 @@ app.get("/api/v1/transactions", (req, res) => {
 			res.json(results);
 		}
 	});
-	connection.release();
 });
 
 app.listen(4000, () => {
