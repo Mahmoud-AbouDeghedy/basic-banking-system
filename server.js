@@ -1,5 +1,5 @@
 const express = require("express");
-const connection = require("./src/DB/connection");
+const pool = require("./src/DB/connection");
 const cors = require("cors");
 const path = require("path");
 
@@ -11,13 +11,20 @@ app.use(express.static(path.join(__dirname, "build")));
 app.get("/api/v1/customers", (req, res) => {
 	const query = "SELECT * FROM Customers";
 
-	connection.query(query, (error, results) => {
+	pool.getConnection((error, connection) => {
 		if (error) {
-			console.error("Error executing the query:", error);
+			console.error("Failed to connect to the database:", error);
 			res.status(500).json({ error: "Internal Server Error" });
-		} else {
-			res.json(results);
 		}
+		connection.query(query, (error, results) => {
+			if (error) {
+				console.error("Error executing the query:", error);
+				res.status(500).json({ error: "Internal Server Error" });
+			} else {
+				res.json(results);
+			}
+		});
+		connection.release();
 	});
 });
 
@@ -33,20 +40,25 @@ app.post("/api/v1/transaction", (req, res) => {
 	Promise.all(
 		queries.map((query) => {
 			return new Promise((resolve, reject) => {
-				connection.query(query, (error, results) => {
+				pool.getConnection((error, connection) => {
 					if (error) {
-						reject(error);
-					} else {
-						resolve(results);
+						console.error("Failed to connect to the database:", error);
+						reject({ error: "Internal Server Error" });
 					}
+					connection.query(query, (error, results) => {
+						connection.release(); // Release the connection back to the pool
+						if (error) {
+							reject(error);
+						} else {
+							resolve(results);
+						}
+					});
 				});
 			});
 		})
-	);
-	connection
-		.release()
+	)
 		.then((results) => {
-			res.json(results);
+			res.json(results); // Return the resolved results as JSON
 		})
 		.catch((error) => {
 			console.error("Error executing the queries:", error);
@@ -57,13 +69,20 @@ app.post("/api/v1/transaction", (req, res) => {
 app.get("/api/v1/transactions", (req, res) => {
 	const query = "SELECT * FROM Transactions";
 
-	connection.query(query, (error, results) => {
+	pool.getConnection((error, connection) => {
 		if (error) {
-			console.error("Error executing the query:", error);
+			console.error("Failed to connect to the database:", error);
 			res.status(500).json({ error: "Internal Server Error" });
-		} else {
-			res.json(results);
 		}
+		connection.query(query, (error, results) => {
+			if (error) {
+				console.error("Error executing the query:", error);
+				res.status(500).json({ error: "Internal Server Error" });
+			} else {
+				res.json(results);
+			}
+		});
+		connection.release();
 	});
 });
 
