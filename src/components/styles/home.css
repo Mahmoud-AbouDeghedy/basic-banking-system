@@ -1,0 +1,28 @@
+.centered-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	background-color: chocolate;
+	gap: 40px;
+}
+
+.button-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	gap: 100px;
+}
+
+.button-container button {
+	background: linear-gradient(to right, #8b4513, #a0522d, #d2691e);
+	font-weight: 600;
+	color: rgb(161, 153, 153);
+}
+
+.button-container button a {
+	color: darkkhaki;
+	text-decoration: none;
+}
