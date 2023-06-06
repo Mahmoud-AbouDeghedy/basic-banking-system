@@ -1,6 +1,7 @@
 const mysql = require("mysql");
 
-const connection = mysql.createConnection({
+const connection = mysql.createPool({
+	connectionLimit: 10,
 	host: "rxh.h.filess.io",
 	user: "BasicBankingApp_structure",
 	password: "be8d1af82fa72c6df51f2b18ce008b67c23a1539",
@@ -9,7 +10,7 @@ const connection = mysql.createConnection({
 });
 
 // Connect to the database
-connection.connect((error) => {
+connection.getConnection((error) => {
 	if (error) {
 		console.error("Failed to connect to the database:", error);
 	} else {
