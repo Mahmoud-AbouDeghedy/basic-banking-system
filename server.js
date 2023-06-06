@@ -1,10 +1,12 @@
 const express = require("express");
-const connection = require("../DB/connection");
+const connection = require("./src/DB/connection");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: "10kb" }));
+app.use(express.static(path.join(__dirname, "/build")));
 
 app.get("/api/v1/customers", (req, res) => {
 	const query = "SELECT * FROM Customers";
