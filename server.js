@@ -23,8 +23,8 @@ app.get("/api/v1/customers", (req, res) => {
 			} else {
 				res.json(results);
 			}
+			connection.release();
 		});
-		connection.release();
 	});
 });
 
@@ -81,8 +81,8 @@ app.get("/api/v1/transactions", (req, res) => {
 			} else {
 				res.json(results);
 			}
+			connection.release();
 		});
-		connection.release();
 	});
 });
 
