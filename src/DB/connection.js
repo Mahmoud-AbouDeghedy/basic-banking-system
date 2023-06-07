@@ -1,7 +1,6 @@
 const mysql = require("mysql");
 
 const pool = mysql.createPool({
-	connectionLimit: 10,
 	host: "rxh.h.filess.io",
 	user: "BasicBankingApp_structure",
 	password: "be8d1af82fa72c6df51f2b18ce008b67c23a1539",
