@@ -18,7 +18,7 @@ import axios from "axios";
 
 export default function Customer() {
 	const [amount, setAmount] = useState(0);
-	const [transactionName, setTransactionName] = useState(null);
+	const [transactionName, setTransactionName] = useState("Humberto Feedham");
 	const [showTransaction, setShowTransaction] = useState(false);
 	const location = useLocation();
 	let { customer, customers } = location.state;

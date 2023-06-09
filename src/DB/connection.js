@@ -1,11 +1,18 @@
 const mysql = require("mysql");
 
+// const pool = mysql.createPool({
+// 	host: "rxh.h.filess.io",
+// 	user: "BasicBankingApp_structure",
+// 	password: "be8d1af82fa72c6df51f2b18ce008b67c23a1539",
+// 	database: "BasicBankingApp_structure",
+// 	port: "3307",
+// });
 const pool = mysql.createPool({
-	host: "rxh.h.filess.io",
-	user: "BasicBankingApp_structure",
-	password: "be8d1af82fa72c6df51f2b18ce008b67c23a1539",
-	database: "BasicBankingApp_structure",
-	port: "3307",
+	host: "sql.freedb.tech",
+	user: "freedb_Deghedy",
+	password: "#3$%G86aF4hx%NU",
+	database: "freedb_Basic Banking App",
+	port: "3306",
 });
 
 // Connect to the database
