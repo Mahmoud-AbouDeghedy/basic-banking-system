@@ -10,7 +10,7 @@ const mysql = require("mysql");
 const pool = mysql.createPool({
 	host: "sql.freedb.tech",
 	user: "freedb_Deghedy",
-	password: "#3$%G86aF4hx%NU",
+	password: "z@E6enqnmS2vgNj",
 	database: "freedb_Basic Banking App",
 	port: "3306",
 });
