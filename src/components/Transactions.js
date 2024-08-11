@@ -8,7 +8,9 @@ function TransactionsTable() {
 		// Fetch transactions data from API or database
 		// and set it to the state
 		const fetchData = async () => {
-			const response = await fetch("/api/v1/transactions");
+			const response = await fetch(
+				"https://basic-banking-app-zrk9.onrender.com/api/v1/transactions"
+			);
 			const data = await response.json();
 			setTransactions(data);
 		};

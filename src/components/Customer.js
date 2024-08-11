@@ -82,7 +82,10 @@ export default function Customer() {
 				date: formattedDateTime,
 			};
 			axios
-				.post(`/api/v1/transaction`, data)
+				.post(
+					`https://basic-banking-app-zrk9.onrender.com/api/v1/transaction`,
+					data
+				)
 				.then((response) => {
 					console.log(response);
 					setShowTransaction(false);
