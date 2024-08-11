@@ -9,7 +9,7 @@ export default function Home() {
 
 	const fetchData = () => {
 		axios
-			.get("https://basic-banking-app-zrk9.onrender.com/api/v1/customers")
+			.get("/api/v1/customers")
 			.then((response) => {
 				setCustomers(response.data);
 			})
