@@ -88,5 +88,5 @@ app.get("/api/v1/transactions", (req, res) => {
 });
 
 app.listen(process.env.PORT || 4000, () => {
-	console.log("Server listening on port 4000");
+	console.log(`Server listening on port ${process.env.PORT || 4000}`);
 });

@@ -87,12 +87,12 @@ export default function Customer() {
 					console.log(response);
 					setShowTransaction(false);
 					setProcessedData(false);
+					window.location.href = "/";
 				})
 				.catch((error) => {
 					// Handle the error
 					console.error(error);
 				});
-			window.location.href = "/";
 		}, 2000);
 	};
 

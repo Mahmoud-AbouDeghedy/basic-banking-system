@@ -1,18 +1,12 @@
 const mysql = require("mysql");
+require("dotenv").config();
 
-// const pool = mysql.createPool({
-// 	host: "rxh.h.filess.io",
-// 	user: "BasicBankingApp_structure",
-// 	password: "be8d1af82fa72c6df51f2b18ce008b67c23a1539",
-// 	database: "BasicBankingApp_structure",
-// 	port: "3307",
-// });
 const pool = mysql.createPool({
-	host: "sql.freedb.tech",
-	user: "freedb_Deghedy",
-	password: "z@E6enqnmS2vgNj",
-	database: "freedb_Basic Banking App",
-	port: "3306",
+	host: process.env.DB_HOST,
+	user: process.env.DB_USER,
+	password: process.env.DB_PASSWORD,
+	database: process.env.DB_NAME,
+	port: process.env.DB_PORT || 3306,
 });
 
 // Connect to the database
